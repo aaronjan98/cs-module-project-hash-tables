@@ -134,13 +134,15 @@ class HashTable:
 
         Implement this.
         """
-        self.capcacity = new_capacity
-        
-
-        # new_table = [[] for _ in range(self.capacity)]
-        # for i in self.capacity:
-        #     if self.table[i]:
-        #         slot = self.djb2
+        self.capacity = new_capacity
+        new_table = [[] for _ in range(self.capacity)]
+        for i in range(len(self._table)):
+            # print(i)
+            if(self._table[i]):
+                key, value = self._table[i].key, self._table[i].value
+                slot = self.hash_index(key)
+                new_table[slot] = HashTableEntry(key, value)
+        self._table = new_table
 
 
 
