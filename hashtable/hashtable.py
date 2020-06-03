@@ -154,18 +154,15 @@ class HashTable:
         """
         # self.table[self.hash_index(key)] = HashTableEntry(key, value)
         # Your code here
-        slot, entry = self.table[self.hash_index(
-            key)], HashTableEntry(key, value)
+        slot, entry = self.table[self.hash_index(key)], HashTableEntry(key, value)
         self.count += 1
         if slot is None:
-            self.table[self.hash_index(
-                key)] = LinkedList(entry)
+            self.table[self.hash_index(key)] = LinkedList(entry)
         else:
             slot.insert(entry)
         # print({slot}, self.table)
         if self.get_load_factor() > 0.7:
-            print(
-                f"{key} LF: {self.get_load_factor()}")
+            print(f"{key} LF: {self.get_load_factor()}")
             self.resize(self.capacity*2)
 
     def delete(self, key):
